@@ -310,47 +310,6 @@ public class DemoProxy extends AccessibilityService {
             }
         });
     }
-
-    public View addListViewOverlayStore(Context context,
-                                               String[] list_content,
-                                               String overlay_content_description) {
-        ListView overlay = new ListView(context);
-
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (context, android.R.layout.simple_list_item_1, list_content){
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent){
-                /// Get the Item from ListView
-                View view = super.getView(position, convertView, parent);
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-                ViewGroup.LayoutParams params = view.getLayoutParams();
-                params.height = 80;
-                view.setLayoutParams(params);
-                return view;
-            }
-        };
-
-        //ArrayAdapter<String> list_adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_2, android.R.id.text1, list_content);
-        overlay.setAdapter(arrayAdapter);
-        overlay.setBackgroundColor(Color.argb(255, 0, 180, 0));
-        overlay.setContentDescription(overlay_content_description);
-        overlay.setDivider(null);
-
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                0,
-                0,
-                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
-        params.gravity = Gravity.TOP | Gravity.LEFT;
-        wm.addView(overlay, params);
-        return overlay;
-    }
-
-
 }
 //<------------------------------------------------  END  ------------------------------------------------->
 
